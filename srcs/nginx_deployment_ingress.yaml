@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: demo-ingress
+  name: ingress
 spec:
   rules:
   - host: nginx.federnetes.com
@@ -32,7 +32,7 @@ spec:
   selector:
     matchLabels:
       app: nginx-ingress
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
