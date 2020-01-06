@@ -6,3 +6,18 @@ resources:
     - mysql-deployment.yaml
     - wordpress-deployment.yaml
     - phpmyadmin-deployment.yaml
+
+---
+
+seretGenerator:
+- name: influxdb-pass
+  literals:
+  - INFLUXDB_DATABASE=grafana_db
+  - INFLUXDB_USERNAME=root
+  - INFLUXDB_PASSWORD=root
+  - INFLUXDB_HOST=influxdb
+  - GF_SECURITY_ADMIN_USER=admin
+  - GF_SECURITY_ADMIN_PASSWORD=graphsRcool
+resources:
+    - grafana.yaml
+    - influxdb.yaml
