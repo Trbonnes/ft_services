@@ -1,15 +1,4 @@
 secretGenerator:
-- name: mysql-pass
-  literals:
-  - password=486768467
-resources:
-    - mysql-deployment.yaml
-    - wordpress-deployment.yaml
-    - phpmyadmin-deployment.yaml
-
----
-
-seretGenerator:
 - name: influxdb-pass
   literals:
   - INFLUXDB_DATABASE=grafana_db
