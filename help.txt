@@ -1,4 +1,0 @@
-https://github.com/isaquexavier/learn-minikube-grafana
-https://github.com/kubernetes-retired/heapster/tree/master/deploy/kube-config/influxdb
-https://github.com/kubernetes-retired/heapster/blob/master/docs/influxdb.md
-https://github.com/kubernetes-retired/heapster/issues/1469
