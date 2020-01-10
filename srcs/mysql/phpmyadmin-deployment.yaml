@@ -52,7 +52,8 @@ spec:
         tier: phpmyadmin
     spec:
       containers:
-      - image: phpmyadmin/phpmyadmin
+      - image: custom-phpmyadmin:1.1
+        imagePullPolicy: Never
         name: phpmyadmin
         env:
         - name: PMA_HOST

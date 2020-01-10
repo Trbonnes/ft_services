@@ -1,0 +1,19 @@
+configMapGenerator:
+- name: nginx-config
+  files:
+  - nginx.conf=./nginx.conf
+secretGenerator:
+- name: ssh-host-keys
+  files:
+  - ssh_host_rsa_key=ssh-keys/ssh_host_rsa_key
+- name: tls-key
+  files:
+  - tls.key=tls-keys/tls.key
+  - tls.crt=tls-keys/tls.crt
+- name: ssh-user
+  literals:
+  - username=usagi
+  - password=usagi
+resources:
+- nginx.yaml
+- nginx_deployment_ingress.yaml

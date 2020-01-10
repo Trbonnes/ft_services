@@ -1,7 +1,10 @@
+configMapGenerator:
+- name: telegraf-config
+  files:
+    - ./telegraf.conf
 secretGenerator:
 - name: influxdb-pass
 resources:
     - grafana.yaml
     - influxdb.yaml
-    - heapster.yaml
-    - heapster-rbac.yaml
+    - telegraf.yaml

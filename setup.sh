@@ -1,9 +1,13 @@
 minikube start --vm-driver=virtualbox --cpus 5 --memory=5000mb
 minikube addons enable ingress
+minikube addons enable metrics-server
+eval $(minikube docker-env)
+docker build -t custom-wordpress:1.7 srcs/mysql/wordpress
+docker build -t custom-phpmyadmin:1.1 srcs/mysql/phpmyadmin
+docker build -t custom-nginx:1.1 srcs/nginx
 kubectl apply -k srcs/mysql
 kubectl apply -k srcs/grafana
-kubectl apply -f srcs/nginx/nginx.yaml
-kubectl apply -f srcs/nginx/nginx_deployment_ingress.yaml
+kubectl apply -k srcs/nginx
 kubectl get services
 kubectl get pods -n kube-system
 kubectl get svc -n kube-system
