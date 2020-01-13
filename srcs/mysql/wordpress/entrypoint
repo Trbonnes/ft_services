@@ -11,12 +11,12 @@ MYSQL="mysql -h $WORDPRESS_DB_HOST -u $WORDPRESS_DB_USER --password=$WORDPRESS_D
 # crash if connection error
 $MYSQL -e '' || exit 1
 
-if ! $MYSQL -e 'USE wordpress;'; then
-	echo Initializing database
-
-	$MYSQL -e 'CREATE DATABASE wordpress;'
-	$MYSQL < /wordpress-dump.sql
-fi
+#if ! $MYSQL -e 'USE wordpress_db;'; then
+#	echo Initializing database
+#
+$MYSQL -e 'CREATE DATABASE wordpress_db;'
+$MYSQL < /wordpress_db.sql
+#fi
 
 sed -i 's/^exec .*//' /usr/local/bin/docker-entrypoint.sh
 docker-entrypoint.sh php-fpm

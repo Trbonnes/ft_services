@@ -1,4 +1,4 @@
-minikube start --vm-driver=virtualbox --cpus 5 --memory=5000mb
+#minikube start --vm-driver=virtualbox --cpus 5 --memory=5000mb
 minikube addons enable ingress
 minikube addons enable metrics-server
 eval $(minikube docker-env)
