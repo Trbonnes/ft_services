@@ -5,8 +5,10 @@ eval $(minikube docker-env)
 docker build -t custom-wordpress:1.7 srcs/mysql/wordpress
 docker build -t custom-phpmyadmin:1.1 srcs/mysql/phpmyadmin
 docker build -t custom-nginx:1.1 srcs/nginx
+docker build -t custom-ftps:1.2 srcs/ftps
 kubectl apply -k srcs/mysql
 kubectl apply -k srcs/grafana
+kubectl apply -k srcs/ftps
 kubectl apply -k srcs/nginx
 kubectl get services
 kubectl get pods -n kube-system

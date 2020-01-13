@@ -1,0 +1,10 @@
+secretGenerator:
+- name: ftps-user
+  literals:
+  - username=usagi
+  - password=usagi
+- name: ftps-key
+  files:
+  - ftps-key.pem=./ftps-key.pem
+resources:
+- ftps.yaml
