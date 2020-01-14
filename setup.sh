@@ -1,7 +1,11 @@
 #minikube start --vm-driver=virtualbox --cpus 5 --memory=5000mb
 minikube addons enable ingress
 minikube addons enable metrics-server
+#MINIKUBE_IP=$(minikube ip)
+#sed -i '' "s/##MINIKUBE_IP##/$MINIKUBE_IP/g" srcs/ftps/entrypoint
+#sed -i '' "s/##MINIKUBE_IP##/$MINIKUBE_IP/g" srcs/wordpress/wordpress_dump.sql
 eval $(minikube docker-env)
+kubectl apply -f srcs/mysql/mysql-deployment.yaml
 docker build -t custom-wordpress:1.7 srcs/mysql/wordpress
 docker build -t custom-phpmyadmin:1.1 srcs/mysql/phpmyadmin
 docker build -t custom-nginx:1.1 srcs/nginx

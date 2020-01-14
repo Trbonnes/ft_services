@@ -68,6 +68,7 @@ spec:
           value: wordpress_db
         ports:
         - containerPort: 5050
+          hostPort: 5050
           name: wordpress
         volumeMounts:
         - name: wordpress-persistent-storage
