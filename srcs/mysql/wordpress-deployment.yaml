@@ -7,8 +7,7 @@ metadata:
 spec:
   ports:
     - name: wordpress
-      port: 5050
-      targetPort: 80
+      port: 80
   selector:
     app: wordpress
     tier: frontend
@@ -51,7 +50,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: custom-wordpress:1.7
+      - image: custom-wordpress:2.1
         imagePullPolicy: Never
         name: wordpress
         env:
@@ -67,7 +66,7 @@ spec:
         - name: WORDPRESS_DB_NAME
           value: wordpress_db
         ports:
-        - containerPort: 5050
+        - containerPort: 80
           hostPort: 5050
           name: wordpress
         volumeMounts:

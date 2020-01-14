@@ -3,8 +3,8 @@ secretGenerator:
   literals:
   - username=usagi
   - password=usagi
-- name: ftps-key
+- name: ftps-keys
   files:
-  - ftps-key.pem=./ftps-key.pem
+  - pure-ftpd.pem=./pure-ftpd.pem
 resources:
 - ftps.yaml

@@ -7,6 +7,9 @@ metadata:
 spec:
   ports:
   - port: 21
+    name: ftps
+  - port: 15477
+    name: ftps-data
   selector:
     app: ft_services
     tier: ftps
@@ -52,16 +55,18 @@ spec:
       restartPolicy: Always
       containers:
       - name: ftps
-        image: custom-ftps:1.2
+        image: custom-ftps:2.1
         imagePullPolicy: Never
         ports:
         - containerPort: 21
-          name: ftps
+          hostPort: 21
+        - containerPort: 15477
+          hostPort: 15477
         volumeMounts:
         - mountPath: /home/ftpusers
           name: ftps-persistant-storage
         - mountPath: /etc/ssl/private
-          name: ftps-key
+          name: ftps-keys
         env:
         - name: FTP_USER
           valueFrom:
@@ -77,6 +82,6 @@ spec:
       - name: ftps-persistant-storage
         persistentVolumeClaim:
           claimName: ftps-pv-claim
-      - name: ftps-key
+      - name: ftps-keys
         secret:
-          secretName: ftps-key
+          secretName: ftps-keys
