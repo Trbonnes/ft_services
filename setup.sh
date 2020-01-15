@@ -1,4 +1,4 @@
-#minikube start --vm-driver=virtualbox --cpus 5 --memory=5000mb
+minikube start --vm-driver=virtualbox --cpus 5 --memory=5000mb
 minikube addons enable ingress
 minikube addons enable metrics-server
 #MINIKUBE_IP=$(minikube ip)
@@ -9,7 +9,7 @@ docker build -t custom-wordpress:2.2 srcs/mysql/wordpress
 docker build -t custom-phpmyadmin:1.1 srcs/mysql/phpmyadmin
 docker build -t custom-nginx:1.1 srcs/nginx
 docker build -t custom-ftps:2.1 srcs/ftps
-docker build -t custom-grafana:1.4 srcs/grafana
+docker build -t custom-grafana:1.5 srcs/grafana
 kubectl apply -k srcs/mysql
 kubectl apply -k srcs/grafana
 kubectl apply -k srcs/ftps
