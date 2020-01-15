@@ -50,7 +50,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: custom-wordpress:2.1
+      - image: custom-wordpress:2.2
         imagePullPolicy: Never
         name: wordpress
         env:

@@ -9,16 +9,16 @@
 MYSQL="mysql -h $WORDPRESS_DB_HOST -u $WORDPRESS_DB_USER --password=$WORDPRESS_DB_PASSWORD"
 
 # crash if connection error
-#$MYSQL -e '' || exit 1
+$MYSQL -e '' || exit 1
 
 #if ! $MYSQL -e 'USE wordpress_db;'; then
 #	echo Initializing database
 #
-#echo "creation database"
-#$MYSQL -e 'CREATE DATABASE wordpress_db;'
-#echo "importation database"
-#$MYSQL wordpress_db < /wordpress_db.sql
-#echo "database imported"
+echo "creation database"
+$MYSQL -e 'CREATE DATABASE wordpress_db;'
+echo "importation database"
+$MYSQL wordpress_db < /wordpress_db.sql
+echo "database imported"
 #fi
 
 sed -i 's/^exec .*//' /usr/local/bin/docker-entrypoint.sh
