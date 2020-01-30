@@ -49,7 +49,6 @@ spec:
         app: wordpress
         tier: frontend
     spec:
-      restartPolicy: Always
       containers:
       - image: custom-wordpress:2.2
         imagePullPolicy: Never

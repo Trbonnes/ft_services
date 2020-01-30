@@ -44,7 +44,6 @@ spec:
         app: wordpress
         tier: mysql
     spec:
-      restartPolicy: Always
       containers:
       - image: wangxian/alpine-mysql
         name: mysql
