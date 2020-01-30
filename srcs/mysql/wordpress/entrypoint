@@ -11,15 +11,13 @@ MYSQL="mysql -h $WORDPRESS_DB_HOST -u $WORDPRESS_DB_USER --password=$WORDPRESS_D
 # crash if connection error
 $MYSQL -e '' || exit 1
 
-#if ! $MYSQL -e 'USE wordpress_db;'; then
-#	echo Initializing database
-#
 echo "creation database"
-$MYSQL -e 'CREATE DATABASE wordpress_db;'
+$MYSQL -e 'CREATE DATABASE wordpress_db;' ||
+		( $MYSQL -e 'DROP DATABASE wordpress_db;'; conn_error)
 echo "importation database"
-$MYSQL wordpress_db < /wordpress_db.sql
+$MYSQL wordpress_db < /wordpress_db.sql ||
+		( $MYSQL -e 'DROP DATABASE wordpress_db;'; conn_error)
 echo "database imported"
-#fi
 
 sed -i 's/^exec .*//' /usr/local/bin/docker-entrypoint.sh
 docker-entrypoint.sh php-fpm
