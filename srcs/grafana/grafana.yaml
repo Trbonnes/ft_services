@@ -13,6 +13,21 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-pv-claim
+  labels:
+    app: grafana
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,7 +47,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: grafana
-        image: custom-grafana:1.6
+        image: custom-grafana:2.0
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
@@ -48,3 +63,10 @@ spec:
           value: "true"
         - name: GF_AUTH_ANONYMOUS_ORG_ROLE
           value: Admin
+        volumeMounts:
+        - name: grafana-persistent-storage
+          mountPath: /var/lib/grafana
+      volumes:
+      - name: grafana-persistent-storage
+        persistentVolumeClaim:
+          claimName: grafana-pv-claim
