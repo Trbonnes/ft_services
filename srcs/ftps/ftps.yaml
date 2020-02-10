@@ -55,7 +55,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: ftps
-        image: custom-ftps:2.2
+        image: custom-ftps:2.3
         imagePullPolicy: Never
         ports:
         - containerPort: 21
