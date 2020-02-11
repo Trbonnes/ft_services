@@ -1,4 +1,4 @@
-#minikube start --vm-driver=virtualbox --bootstrapper=kubeadm --cpus 5 --memory=5000mb
+minikube start --vm-driver=virtualbox --bootstrapper=kubeadm --cpus 5 --memory=5000mb
 minikube addons enable ingress
 minikube addons enable metrics-server
 #MINIKUBE_IP=$(minikube ip)
