@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # with lftp:
-# open usagi@192.168.99.157
+# open usagi@192.168.99.158
 # debug
 # `set ssl:verify-certificate false`
 
@@ -12,4 +12,4 @@ adduser -D "$FTP_USER"
 echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
 echo "user:password = $FTP_USER:$FTP_PASSWORD"
 
-/usr/sbin/pure-ftpd -Y 2 -p 15477:15477 -P 192.168.99.157
+/usr/sbin/pure-ftpd -Y 2 -p 15477:15477 -P 192.168.99.158
